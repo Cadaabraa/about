@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,9 +56,46 @@
         .social-icons a img:focus {
             outline: none;
         }
+
+        /* Your existing styles */
+        #loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            z-index: 9999;
+        }
+        #loading-bar {
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 2vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #e7f7f7;
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+        }
     </style>
 </head>
-<body>
+
+<body onload="loading()">
+    <!-- Loading Screen -->
+    <div id="loading-container">
+        <div id="loading-bar">[..........]</div>
+    </div>
+
     <!-- ASCII Art -->
     <pre>
        ___         _      _             
@@ -86,7 +124,7 @@
     <div class="custom-cursor"></div>
 
     <script>
-        // Your JavaScript code
+        // Your existing JavaScript code
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let interval = null;
 
@@ -122,5 +160,33 @@
             customCursor.style.left = e.clientX + "px";
         });
     </script>
+    
+    <script>
+        // Provided loading bar JavaScript code
+        loadStr = "";
+        let i = 0;
+
+        function loading() {
+            let id = null;
+            const loadingContainer = document.getElementById('loading-container');
+            const mainContent = document.body;
+
+            clearInterval(id);
+            id = setInterval(load, 200); // Adjust this duration as needed
+
+            function load() {
+                if (loadingContainer.style.opacity <= 0) {
+                    clearInterval(id);
+                    loadingContainer.style.display = 'none';
+                    mainContent.style.opacity = 1;
+                } else {
+                    loadingContainer.style.opacity = parseFloat(loadingContainer.style.opacity) - 0.1;
+                }
+            }
+        }
+
+        window.onload = loading;
+    </script>
 </body>
+
 </html>
