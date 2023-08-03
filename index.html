@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,36 @@
     <link rel="icon" href="icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-    <style>
+    <style>     
+            
+        .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1); /* Solid black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    
         body {
             background-color: black;
             color: white;
@@ -57,45 +85,34 @@
             outline: none;
         }
 
-        /* Your existing styles */
-        #loading-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000000;
-            z-index: 9999;
-        }
-        #loading-bar {
-            font-family: 'Ubuntu Mono', monospace;
-            font-size: 2vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #e7f7f7;
-        }
-        .custom-cursor {
-            position: absolute;
-            width: 0px;
-            height: 0px;
-            background-color: white;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-        }
+        .cool-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* Make sure it's above other elements */
+}
+
+.cool-button i {
+    color: black;
+}
+
+        
     </style>
 </head>
-
-<body onload="loading()">
-    <!-- Loading Screen -->
-    <div id="loading-container">
-        <div id="loading-bar">[..........]</div>
+<body>
+    <div class="loading-overlay">
+        <div class="loader"></div>
     </div>
-
+    
     <!-- ASCII Art -->
     <pre>
        ___         _      _             
@@ -119,12 +136,16 @@
             <img src="https://raw.githubusercontent.com/Cadaabraa/about_me/main/reddit-icon.png" alt="Reddit Icon">
         </a>
     </div>
+    
+    <div class="cool-button">
+        <i class="fas fa-question"></i>
+    </div>
 
     <!-- Custom cursor element -->
     <div class="custom-cursor"></div>
 
     <script>
-        // Your existing JavaScript code
+        // Your JavaScript code
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let interval = null;
 
@@ -153,40 +174,39 @@
             }, 30);
         };
 
+
+        
+
         // Update the position of the custom cursor based on mouse movements
-        document.addEventListener("mousemove", (e) => {
-            const customCursor = document.querySelector(".custom-cursor");
-            customCursor.style.top = e.clientY + "px";
-            customCursor.style.left = e.clientX + "px";
-        });
-    </script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.querySelector(".loading-overlay");
+
+    setTimeout(() => {
+        loadingOverlay.style.opacity = 0;
+        setTimeout(() => {
+            loadingOverlay.style.display = "none";
+        }, 500); // Wait for the opacity transition to complete
+    }, 3000); // Show the loading overlay for 3 seconds
+});
+
+document.querySelector(".cool-button").addEventListener("click", () => {
+    // Do something cool here when the button is clicked
+    alert("You're about to see something cool! Press Enter to continue.");
     
-    <script>
-        // Provided loading bar JavaScript code
-        loadStr = "";
-        let i = 0;
-
-        function loading() {
-            let id = null;
-            const loadingContainer = document.getElementById('loading-container');
-            const mainContent = document.body;
-
-            clearInterval(id);
-            id = setInterval(load, 200); // Adjust this duration as needed
-
-            function load() {
-                if (loadingContainer.style.opacity <= 0) {
-                    clearInterval(id);
-                    loadingContainer.style.display = 'none';
-                    mainContent.style.opacity = 1;
-                } else {
-                    loadingContainer.style.opacity = parseFloat(loadingContainer.style.opacity) - 0.1;
-                }
-            }
+    // Listen for keydown event
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            // Redirect to another site
+            window.location.href = "https://cadaabraa.github.io/thought/"; // Replace with your desired URL
         }
+    });
+});
 
-        window.onload = loading;
+
+
+                    
     </script>
 </body>
-
 </html>
+
+
