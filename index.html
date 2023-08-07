@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
     <style>     
-    
+
         body {
             background-color: black;
             color: white;
@@ -37,25 +37,24 @@
             color: black;
         }
         .social-icons {
-            display: inline; /* Display the images inline */
-            text-decoration: none; /* Remove underline from the links */
-            z-index: 1003; /* Make sure it's above the canvas */
+            display: inline; 
+            text-decoration: none; 
+            z-index: 1003; 
         }
         .social-icons a {
-            margin-left: 10px; /* Add some spacing between the icons */
-            text-decoration: none; /* Remove underline from the links */
-            z-index: 1003; /* Make sure it's above the canvas */
+            margin-left: 10px; 
+            text-decoration: none; 
+            z-index: 1003; 
         }
         .social-icons a img {
             width: 24px;
             height: 24px;
-            z-index: 1003; /* Make sure it's above the canvas */
+            z-index: 1003; 
         }
         pre {
-            padding-right: 35px; /* Adjust the amount of left padding as needed */
+            padding-right: 35px; 
         }
 
-        /* Remove blue outline (focus ring) from images */
         .social-icons a img:focus {
             outline: none;
         }
@@ -77,7 +76,7 @@
     background-color: white;
     opacity: 0;
     pointer-events: none;
-    z-index: 1002; /* Make sure it's above the other content */
+    z-index: 1002; 
     transition: opacity 3s;
 }
 
@@ -85,7 +84,7 @@ body {
             margin: 0;
             background: #000;
             font-family: "Open Sans";
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: hidden; 
         }
         canvas{
     position: absolute;
@@ -96,14 +95,14 @@ body {
     margin: auto;
     border: 0px solid white;
 }
-        
+
     </style>
 </head>
 <body>
     <div class="loading-overlay">
         <div class="loader"></div>
     </div>
-    
+
     <!-- ASCII Art -->
     <pre>
        ___         _      _             
@@ -127,7 +126,7 @@ body {
             <img src="https://raw.githubusercontent.com/Cadaabraa/about_me/main/reddit-icon.png" alt="Reddit Icon">
         </a>
     </div>
-    
+
     <div class="cool-button">
     </div>
 
@@ -136,7 +135,7 @@ body {
     <div class="custom-cursor"></div>
     <div class="overlay"></div>
     <script>
-        // Your JavaScript code
+
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let interval = null;
 
@@ -164,7 +163,6 @@ body {
                 iteration += 1 / 3;
             }, 30);
         };
-
 
         (function(w) {
 
@@ -515,9 +513,6 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequ
 
 Fluid.initialize();
 
-
     </script>
 </body>
 </html>
-
-
