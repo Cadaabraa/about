@@ -1,4 +1,4 @@
-(About Me :)
+About Me :)
 
 Site can be found at https://cadaabraa.github.io/about/
 
